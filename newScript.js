@@ -64,9 +64,18 @@ $('h2.current').html(`${currenGroup.name} <span>${currenGroup.arr.length}</span>
 
 
 for (key in newOldArr) {
-    let thisLength = JSON.parse(lS.getItem(newOldArr[key])) || []
+    const storageKey = newOldArr[key]
+    const jsonVal = lS.getItem(storageKey)
+    const length = JSON.parse(jsonVal).length || 0
 
     if (newOldArr[key] != currenGroup.name) {
-        $('.allGrInBlock').append(`<a href="/?g=${newOldArr[key]}"><h2 class='${newOldArr[key]}'>${newOldArr[key]} <span>${thisLength.length}</span></h2></a>`)
+        $('.allGrInBlock').append(
+            `<a href="/?g=${storageKey}">
+                <h2 class = '${storageKey}'>
+                    ${storageKey} 
+                    <span>${length}</span>
+                </h2>
+            </a>`
+        )
     }
 }

@@ -22,7 +22,6 @@ class Group {
     setToAllGroups(name, array) {
         array.push(name)
         array = unique(array)
-        console.log(array)
 
         localStorage.setItem('All Groups', JSON.stringify(array))
     }
