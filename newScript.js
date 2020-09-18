@@ -62,18 +62,18 @@ let newOldArr = JSON.parse(lS.getItem('All Groups'))
 
 $('h2.current').html(`${currenGroup.name} <span>${currenGroup.arr.length}</span>`)
 
-
 for (key in newOldArr) {
+    console.log(1)
     const storageKey = newOldArr[key]
     const jsonVal = lS.getItem(storageKey)
-    const length = JSON.parse(jsonVal).length || 0
+    const length = JSON.parse(jsonVal) || []
 
     if (newOldArr[key] != currenGroup.name) {
         $('.allGrInBlock').append(
             `<a href="/?g=${storageKey}">
-                <h2 class = '${storageKey}'>
+                <h2 class = '${storageKey}' >
                     ${storageKey} 
-                    <span>${length}</span>
+                    <span>${length.length}</span>
                 </h2>
             </a>`
         )

@@ -1,16 +1,5 @@
 let array = JSON.parse(localStorage.getItem('All Groups')) || []
-
-function unique(arr) {
-    let result = []
-
-    for (let str of arr) {
-        if (!result.includes(str)) {
-            result.push(str)
-        }
-    }
-
-    return result
-}
+console.log(array)
 
 class Group {
     constructor(name) {
@@ -20,10 +9,12 @@ class Group {
     }
 
     setToAllGroups(name, array) {
-        array.push(name)
-        array = unique(array)
-
-        localStorage.setItem('All Groups', JSON.stringify(array))
+        let rawArray = new Set(array)
+        if (!rawArray.has(name)) {
+            rawArray.add(name)
+        }
+        let newRawArray = Array.from(rawArray)
+        localStorage.setItem('All Groups', JSON.stringify(newRawArray))
     }
 
     getFromLS(name) {
@@ -38,13 +29,17 @@ class Group {
         localStorage.setItem(this.name, JSON.stringify(this.arr))
     }
 
+
     doNote(keyObj, toDoPlace) {
         let key = keyObj.parentNode.querySelector('h3').getAttribute('data-id')
+        let newArr = toDoPlace.arr.slice()
+        let thisArr = this.arr.slice()
 
-        toDoPlace.arr.push(this.arr[key])
-        this.arr.splice(key, 1)
-        localStorage.setItem(this.name, JSON.stringify(this.arr))
-        localStorage.setItem(toDoPlace.name, JSON.stringify(toDoPlace.arr))
+        newArr.push(thisArr[key])
+        thisArr.reverse().splice(key, 1)
+
+        localStorage.setItem(this.name, JSON.stringify(thisArr))
+        localStorage.setItem(toDoPlace.name, JSON.stringify(newArr))
     }
 
     delFromLS(key) {
@@ -52,13 +47,13 @@ class Group {
 
         needableArray.reverse().splice(key, 1)
         needableArray.reverse()
+
         localStorage.setItem(this.name, JSON.stringify(needableArray))
     }
 
     innerAll(docObj, doIt, rev, doItRes) {
         let reverS = rev || true
         let doItResult = doItRes || ''
-
         if (doIt) {
             doItResult = `<button class="doNote" data-r="${this.name}">✔</button>
             <button class="delNote" data-r="${this.name}">-</button>`
@@ -71,6 +66,8 @@ class Group {
         if (reverS) {
             needableArray.reverse()
         }
+
+        console.log(needableArray, this.arr)
 
         for (let key in needableArray) {
             $(docObj).append(`
