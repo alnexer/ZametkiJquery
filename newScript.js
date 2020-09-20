@@ -9,9 +9,11 @@ const lS = localStorage
 addNoteBtn.on('click', OpenExtraFiled)
 addGroup.on('click', OpenGroupCreationField)
 
+//lS.clear()
 
 const allNotes = new Group('Все записи')
 const doneNotes = new Group('Сделанные')
+
 
 currenGroup.innerAll('.allNotes', true, true)
 
@@ -58,12 +60,17 @@ $('.delNote').on('click', (e) => {
     window.location.reload()
 })
 
+$('.delGroup').on('click', (e) => {
+    currenGroup.deleteGroup()
+
+    window.location = '/'
+})
+
 let newOldArr = JSON.parse(lS.getItem('All Groups'))
 
 $('h2.current').html(`${currenGroup.name} <span>${currenGroup.arr.length}</span>`)
 
 for (key in newOldArr) {
-    console.log(1)
     const storageKey = newOldArr[key]
     const jsonVal = lS.getItem(storageKey)
     const length = JSON.parse(jsonVal) || []

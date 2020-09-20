@@ -1,3 +1,11 @@
+<?php 
+ $g = trim($_GET['g']);
+
+ if($g == '' || $g == ' '){
+     $g = 'Все записи';
+ }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +26,7 @@
             </div>
             <button class="addNote">+</button>
             <button class="addGroup">Создать группу</button>
+            <button class="delGroup">Удалить группу</button>
             <div class="groupCreationField">
             <h3>
                 <form class="adderGroupForm">
@@ -48,7 +57,7 @@
     </div>
     <script src="/GroupClass.js"></script>
     <script>
-        let currenGroup = new Group('<?=$_GET['g']?>')
+        let currenGroup = new Group('<?echo $g?>')
     </script>
     <script src="/newScript.js"></script>
 </body>

@@ -1,31 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
 
-html,body{
-    margin:0;
-    padding:0;
+html,
+body {
+    margin: 0;
+    padding: 0;
     font-family: 'Montserrat', sans-serif;
-    
+
 }
 
-a{
+a {
     color: inherit;
     text-decoration: none;
 }
 
-h1, h2, button{
+h1,
+h2,
+button {
     font-family: 'Montserrat', sans-serif;
 }
 
-h3, input{
+h3,
+input {
     font-family: 'Open Sans', sans-serif !important;
 }
 
-*{
+* {
     box-sizing: border-box;
 }
 
-header{
+header {
     width: 100%;
     height: 80px;
     background-color: #e9e9e9;
@@ -36,30 +40,34 @@ header{
     border-bottom: .5px solid rgba(184, 184, 184, 0.288);
 }
 
-#wrapper{
+#wrapper {
     width: 60%;
     height: auto;
     margin-left: 20%;
     margin-top: 40px;
-    color:  rgb(43, 33, 33);
+    color: rgb(43, 33, 33);
     display: block;
 }
-@media screen and (max-width: 1200px){
-    #wrapper{
+
+@media screen and (max-width: 1200px) {
+    #wrapper {
         width: 80%;
         margin-top: 60px;
         margin-left: 10%;
     }
 }
-@media screen and (max-width: 600px){
-    #wrapper{
+
+@media screen and (max-width: 600px) {
+    #wrapper {
         width: 90%;
         margin-top: 60px;
         margin-left: 5%;
     }
 }
 
-.note, .extraNoteField, .groupCreationField{
+.note,
+.extraNoteField,
+.groupCreationField {
     border: 2px solid rgb(231, 231, 231);
     background-color: white;
     width: 100%;
@@ -69,12 +77,13 @@ header{
     display: block;
 }
 
-.extraNoteField, .groupCreationField {
-   display: none;
-   box-shadow: 0 0 5px rgba(0, 0, 0, 0.137);
+.extraNoteField,
+.groupCreationField {
+    display: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.137);
 }
 
-input{ 
+input {
     height: 40px;
     border: none;
     border-bottom: 2px solid #333;
@@ -83,43 +92,50 @@ input{
     font-size: 17px;
     outline: none;
 }
-input[type=text]{ 
+
+input[type=text] {
     padding-left: 0;
     width: 200px;
     margin-right: 20px !important;
 }
-input[type=submit]{ 
+
+input[type=submit] {
     padding: 0 10px;
     border-radius: 5px;
     background-color: floralwhite;
     border: 2px solid #333;
     cursor: pointer;
 }
-.clicked{
+
+.clicked {
     transform: rotate(45deg);
     filter: invert(1);
 }
 
-h3{
+h3 {
     margin-left: 30px;
     font-weight: 400;
     max-width: 80%;
     display: inline-block;
 }
-h2 span{
+
+h2 span {
     font-size: 15px !important;
     margin-bottom: 10px !important;
     color: rgba(255, 0, 0, 0.555) !important;
     margin-right: 5px;
     margin-left: -4px;
 }
-a h2:hover{
+
+a h2:hover {
     color: grey;
 }
-h1{
+
+h1 {
     width: 100%;
 }
-h2{
+
+h2 {
     display: block;
     margin-right: 10px;
     font-weight: 600;
@@ -144,11 +160,11 @@ h2{
     transition: .5s;
 }
 
-.allGrInBlock:hover{
+.allGrInBlock:hover {
     overflow: visible;
 }
 
-h2{
+h2 {
     background-color: rgb(255, 255, 255);
     margin: 0 !important;
     padding: 20px 0;
@@ -162,29 +178,32 @@ h2{
     opacity: .7;
 }
 
-.hh{
+.hh {
     height: 100px;
     width: 100%;
     display: block;
     z-index: 1;
     border-bottom: 1.5px solid rgba(51, 51, 51, 0.26);
 }
-.addGroup{
+
+.addGroup,
+.delGroup {
     display: inline-block;
     position: relative;
     border: none;
     border-radius: 5px;
-    background-color:#289457;
+    background-color: #289457;
     color: rgb(255, 255, 255);
     margin-right: 0;
     height: 50px;
-    font-size:20px;
+    font-size: 20px;
     margin-right: 10px;
     padding: 0 20px;
     float: right;
     outline: none;
     cursor: pointer;
 }
+
 button.addNote {
     display: inline-block;
     position: relative;
@@ -195,62 +214,66 @@ button.addNote {
     margin-right: 0;
     width: 50px;
     height: 50px;
-    font-size:20px;
+    font-size: 20px;
     float: right;
     outline: none;
     cursor: pointer;
 }
-button:hover{
+
+button:hover {
     opacity: .7;
     transition: .5s;
 }
 
-.delNote, .doNote{
+.delNote,
+.doNote {
     display: inline-block;
     position: relative;
     border: none;
     border-radius: 5px;
-    background-color:#289457;
+    background-color: #289457;
     color: rgb(255, 255, 255);
     margin-right: 10px;
     margin-top: 10px;
     width: 40px;
     height: 40px;
-    font-size:20px;
+    font-size: 20px;
     float: right;
     outline: none;
     cursor: pointer;
 }
 
-.showed{
+.showed {
     display: block;
     transition: .5s;
 }
 
-.Done, .Main{
+.Done,
+.Main {
     opacity: .5;
     cursor: pointer;
 }
 
-.doneNotes .note h3{
+.doneNotes .note h3 {
     text-decoration: line-through !important;
     text-decoration-color: rgba(0, 0, 0, 0.596) !important;
 }
 
-.main{
+.main {
     margin-bottom: 50px;
 }
 
-.footer{
-    width:100%;
+.footer {
+    width: 100%;
     background: rgb(192, 190, 190);
     margin-top: 100px;
     box-sizing: border-box;
 }
-.footer h5{
-    width:100% !important;
+
+.footer h5 {
+    width: 100% !important;
     padding: 20px;
-    margin:0;
+    margin: 0;
     font-weight: 500;
-    text-align:center;
+    text-align: center;
 }

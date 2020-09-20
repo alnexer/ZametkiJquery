@@ -1,5 +1,4 @@
 let array = JSON.parse(localStorage.getItem('All Groups')) || []
-console.log(array)
 
 class Group {
     constructor(name) {
@@ -10,10 +9,13 @@ class Group {
 
     setToAllGroups(name, array) {
         let rawArray = new Set(array)
+
         if (!rawArray.has(name)) {
             rawArray.add(name)
         }
+
         let newRawArray = Array.from(rawArray)
+
         localStorage.setItem('All Groups', JSON.stringify(newRawArray))
     }
 
@@ -21,6 +23,21 @@ class Group {
         let nameR = name || this.name
 
         return JSON.parse(localStorage.getItem(nameR))
+    }
+
+    deleteGroup() {
+        let rawArray = new Set(array)
+
+        rawArray.delete(this.name)
+
+        let newRawArray = Array.from(rawArray)
+
+        if (this.name != "Сделанные" && this.name != "Все записи") {
+            localStorage.setItem('All Groups', JSON.stringify(newRawArray))
+        }
+
+        localStorage.removeItem(this.name)
+
     }
 
     setToLS(inpVal) {
@@ -66,8 +83,6 @@ class Group {
         if (reverS) {
             needableArray.reverse()
         }
-
-        console.log(needableArray, this.arr)
 
         for (let key in needableArray) {
             $(docObj).append(`
